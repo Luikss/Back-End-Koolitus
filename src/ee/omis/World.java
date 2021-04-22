@@ -1,16 +1,19 @@
 package ee.omis;
 
+import ee.omis.character.Character;
+import ee.omis.item.Item;
+
 import java.util.List;
 
 public class World {
     private static int height;
     private static int width;
     private List<Character> characters;
+    private List <Item> items;
 
-    public World(int height, int width, List<Character> characters) {
+    public World(int height, int width) {
         World.height = height;
         World.width = width;
-        this.characters = characters;
     }
 
     public static int getHeight() {
@@ -29,6 +32,14 @@ public class World {
         this.characters = characters;
     }
 
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
     public void render() {
         char symbol;
 
@@ -42,12 +53,17 @@ public class World {
                     symbol = ' ';
                 }
 
-                for (Character c : characters) {
-                    if (c.getxCoord() == x && c.getyCoord() == y) {
-                        symbol = c.getSymbol();
+                for (Item i : items) {
+                    if (i.getxCoord() == x && i.getyCoord() == y && i.isVisible()) {
+                        symbol = i.getSymbol();
                     }
                 }
 
+                for (Character c : characters) {
+                    if (c.getxCoord() == x && c.getyCoord() == y && c.isVisible()) {
+                        symbol = c.getSymbol();
+                    }
+                }
                 System.out.print(symbol);
             }
             System.out.println();
