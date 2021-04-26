@@ -1,6 +1,7 @@
 package ee.omis.Admin;
 
-import ee.omis.Client.Client;
+import ee.omis.Client.BusinessClient;
+import ee.omis.Client.RegularClient;
 
 public class ClientSupport extends Admin implements Balance {
 
@@ -9,23 +10,27 @@ public class ClientSupport extends Admin implements Balance {
     }
 
     @Override
-    public void addBalance(double sum) {
-        double oldBalance = Client.getBalance();
-        double newBalance = oldBalance + sum;
-        Client.setBalance(newBalance);
+    public void addBalanceRegular(double sum) {
+        RegularClient.setBalance(RegularClient.getBalance() + sum);
     }
 
     @Override
-    public void removeBalance(double sum) {
-        double oldBalance = Client.getBalance();
-        double newBalance = oldBalance - sum;
-        Client.setBalance(newBalance);
+    public void addBalanceBusiness(double sum) {
+        BusinessClient.setBalance(BusinessClient.getBalance() + sum);
     }
 
     @Override
-    public void giveDiscount(double sum) {
-        double oldDiscount = Client.getDiscount();
-        double newDiscount = oldDiscount - sum;
-        Client.setDiscount(newDiscount);
+    public void giveDiscountRegular(double sum) {
+        RegularClient.setDiscount(RegularClient.getDiscount() - sum);
+    }
+
+    @Override
+    public void giveDiscountBusiness(double sum) {
+        BusinessClient.setDiscount(BusinessClient.getBalance() - sum);
+    }
+
+    @Override
+    public void messageClient(String message) {
+        System.out.println("ClientSupport: " + message);
     }
 }

@@ -1,6 +1,6 @@
 package ee.omis.Admin;
 
-import ee.omis.User;
+import ee.omis.Default.User;
 
 public class Admin extends User {
 

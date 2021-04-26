@@ -1,6 +1,6 @@
-package ee.omis;
+package ee.omis.Default;
 
-public class User {
+public class User implements MainFunctions {
 
     private String name;
     private String email;
