@@ -2,7 +2,7 @@ package ee.omis.item;
 
 public class Hammer extends Item {
 
-    public Hammer(double strength, int durability) {
-        super(strength, durability);
+    public Hammer(String name, double strength, int durability) {
+        super(name, strength, durability);
     }
 }
