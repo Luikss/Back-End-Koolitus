@@ -12,13 +12,17 @@ public class Main {
 
         while (!input.equals("stop")) {
 
-            //Sisestades 1 täht, näidatakse talle selle tähega algavad elemendid
+            //Sisestades input > 2, lisatakse input listi.
+            //Sisestades 1 täht, näidatakse kasutajale selle tähega algavad elemendid listis.
+            //Sisestades number 1-3, kuvatakse talle enumi väärtused.
+            //Sisestades stop, lõpetatakse programm ja kuvatakse kogu list (kontrolliks).
+
             if (input.length() == 1) {
                 user.searchInList(input);
             }
-
             user.tryAddToList(input);
             input = scanner.nextLine();
         }
+        System.out.println(user.getList());
     }
 }
