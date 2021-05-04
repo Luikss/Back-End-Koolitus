@@ -1,35 +1,55 @@
 package ee.omis.character;
 
-import ee.omis.item.Item;
+public class Enemy extends Character implements FightCharacter {
 
-public class Enemy extends Character {
-
-    private static int health;
+    private int health;
     private EnemyType enemyType;
 
-    public Enemy(String name) {
-        super(name, 'Z', false);
+    public Enemy() {
+        super('Z', false);
         reboost();
-        enemyType = EnemyType.getRandomEnemyType();
     }
 
-    public static int getHealth() {
+    public int getHealth() {
         return health;
     }
 
-    public static void decreaseHealth(int healthTaken) {
+    public EnemyType getEnemyType() {
+        return enemyType;
+    }
+
+    public void decreaseHealth(int healthTaken) {
         health -= healthTaken;
     }
 
-    public static void killed() {
-        health = 0;
+    private void healthByCharacterType() {
+        switch (enemyType) {
+            case THIEF:
+                health = (int) (Math.random() * (2) + 1);
+                break;
+            case WARRIOR:
+                health = (int) (Math.random() * (3) + 1);
+                break;
+            case ARCHER:
+                health = (int) (Math.random() * (4) + 1);
+                break;
+            case GOBLIN:
+                health = (int) (Math.random() * (5) + 1);
+                break;
+            case ORC:
+                health = (int) (Math.random() * (6) + 1);
+                break;
+            case WIZARD:
+                health = (int) (Math.random() * (7) + 1);
+                break;
+            case DRAGON:
+                health = (int) (Math.random() * (8) + 1);
+                break;
+        }
     }
 
-    public static void loseHealth(Item item) {
-        health =(int) (health - item.getStrength());
-    }
-
-    public static void reboost() {
-        health = (int) (Math.random() * (10));
+    public void reboost() {
+        enemyType = EnemyType.getRandomEnemyType();
+        this.healthByCharacterType();
     }
 }

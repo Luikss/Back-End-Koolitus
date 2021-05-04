@@ -1,16 +1,16 @@
 package ee.omis.item;
 
-import ee.omis.character.Enemy;
-
 public class Sword extends Item implements FightWeapon {
 
+    private static double strength = 10.0;
     public Sword() {
         super("Mõõk", 10.0, 1);
     }
 
     @Override
-    public void hit() {
-        Enemy.killed();
+    public double hit() {
+        strength = getStrengthFromItemType(strength);
         setLevel(getLevel() + 1);
+        return strength;
     }
 }

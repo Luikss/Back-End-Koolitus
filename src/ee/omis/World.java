@@ -24,16 +24,8 @@ public class World {
         return width;
     }
 
-    public List<Character> getCharacters() {
-        return characters;
-    }
-
     public void setCharacters(List<Character> characters) {
         this.characters = characters;
-    }
-
-    public List<Item> getItems() {
-        return items;
     }
 
     public void setItems(List<Item> items) {
