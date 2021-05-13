@@ -14,18 +14,18 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("CART componendis");
-    this.cartItems = this.cartService.itemsInCart;
+    this.cartItems = this.cartService.getCartItems();
     this.calculateSumOfCart();
   }
 
   onRemoveFromCart(index: number) {
-    this.cartService.itemsInCart.splice(index, 1);
+    this.cartService.removeFromCart(index);
     this.calculateSumOfCart();
   }
 
   onEmptyCart() {
-    this.cartService.itemsInCart = [];
-    this.cartItems = this.cartService.itemsInCart;
+    this.cartService.emptyCart();
+    this.cartItems = this.cartService.getCartItems();
     this.calculateSumOfCart();
   }
 
