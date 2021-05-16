@@ -1,0 +1,11 @@
+<form (ngSubmit)="onSubmit(itemAddForm)" #itemAddForm="ngForm">
+    <label>Keretüüp</label><br>
+    <input type="text" ngModel name="type" required><br>
+    <label>Mark</label><br>
+    <input type="text" ngModel name="make" required><br>
+    <label>Mudel</label><br>
+    <input type="text" ngModel name="model" required><br>
+    <label>Aasta</label><br>
+    <input type="text" ngModel name="year" required><br>
+    <button type="submit" [disabled]="itemAddForm.invalid">Sisesta</button>
+</form>

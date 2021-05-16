@@ -1,0 +1,9 @@
+<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <label>Eesnimi</label>
+    <input ngModel name="firstName" type="text"><br>
+    <label>Perenimi</label>
+    <input ngModel name="lastName" type="text"><br>
+    <label>Vanus</label>
+    <input ngModel name="age" type="number"><br>
+    <button type="submit">Lisa inimene</button>
+</form>
