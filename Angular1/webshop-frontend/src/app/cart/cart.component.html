@@ -11,4 +11,4 @@
     <button (click)="onRemoveFromCart(i)">X</button>
 </div>
 
-<div>KOKKU: {{ sumOfCart }} €</div>
+<div *ngIf="cartItems.length > 0">KOKKU: {{ sumOfCart | itemPrice }} €</div>
