@@ -16,10 +16,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("HOME componendis");
-    this.items = this.itemService.getItems();
+    this.itemService.getItemsFromDatabase().subscribe(items => {
+      for (const key in items) {
+        this.items.push(items[key]);
+      }
+    })
   }
 
   onAddToCart(item: Item): void {
     this.cartService.addToCart(item);
+    this.cartService.cartItemsChanged.next(this.cartService.getCartItems());
   }
 }

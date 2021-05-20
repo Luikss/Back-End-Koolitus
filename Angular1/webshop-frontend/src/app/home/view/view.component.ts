@@ -16,6 +16,6 @@ export class ViewComponent implements OnInit {
 
   ngOnInit(): void {
     let id = Number(this.route.snapshot.paramMap.get("itemId"));
-    this.item = this.itemService.getItems()[id];
+    this.item = this.itemService.getItem(id);
   }
 }

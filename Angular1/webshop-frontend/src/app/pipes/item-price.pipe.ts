@@ -6,8 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ItemPricePipe implements PipeTransform {
 
   transform(value: number): string {
-    return value.toLocaleString('ee',
-    {minimumFractionDigits: 2,
-    maximumFractionDigits: 2});
+    return value.toLocaleString('ee', 
+      {minimumFractionDigits: 2, 
+        maximumFractionDigits: 2},
+    ).replace(",", ".");
   }
 }
