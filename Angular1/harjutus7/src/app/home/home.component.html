@@ -1,7 +1,10 @@
+<a routerLink="/chosen">Vaata valituid</a>
+<br><br>
 <button (click)="onRemoveAll()">Tühjenda</button>
 <button routerLink="/new">Lisa uus inimene</button>
 
 <div *ngFor="let human of humans; let i = index">
     {{ human.firstName }} {{ human.lastName }}
     <button (click)="onRemoveOne(i)">X</button>
+    <button (click)="onChoose(human)">Lisa valitute hulka</button>
 </div>

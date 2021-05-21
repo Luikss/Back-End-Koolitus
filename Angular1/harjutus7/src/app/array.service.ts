@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Person } from './person.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,23 +20,23 @@ export class ArrayService {
 
   constructor() { }
   
-  removeAll() {
+  removeAll(): void {
     this.people = [];
   }
 
-  removeOne(index: number) {
+  removeOne(index: number): void {
     this.people.splice(index, 1);
   }
 
-  addOne(human: any) {
+  addOne(human: Person): void {
     this.people.push(human);
   }
 
-  getOne(index: number) {
+  getOne(index: number): Person {
     return this.people[index];
   }
 
-  getAll() {
+  getAll(): Person[] {
     return this.people.slice();
   }
 }

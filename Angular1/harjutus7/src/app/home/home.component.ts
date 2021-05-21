@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArrayService } from '../array.service';
+import { Person } from '../person.model';
+import { ValitudService } from '../valitud/valitud.service';
 
 @Component({
   selector: 'app-home',
@@ -7,36 +9,41 @@ import { ArrayService } from '../array.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  humans: any;
-  human: any;
+  humans!: Person[];
+  human!: Person;
 
-  constructor(private arrayService: ArrayService) { 
+  constructor(private arrayService: ArrayService,
+    private valitudService: ValitudService,) { 
   }
 
   ngOnInit(): void {
     this.humans = this.arrayService.getAll();
   }
 
-  onRemoveAll() {
+  onChoose(inimene: any): void {
+    this.valitudService.addHuman(inimene);
+  }
+
+  onRemoveAll(): void {
     this.arrayService.removeAll();
     this.humans = this.arrayService.getAll();
   }
 
-  onRemoveOne(i: number) {
+  onRemoveOne(i: number): void {
     this.arrayService.removeOne(i);
     this.humans = this.arrayService.getAll();
   }
 
-  onAdd(human: any) {
+  onAdd(human: Person): void {
     this.arrayService.addOne(human);
     this.humans = this.arrayService.getAll();
   }
 
-  onGetOne(i: number) {
+  onGetOne(i: number): void {
     this.human = this.arrayService.getOne(i);
   }
 
-  onGetAll() {
+  onGetAll(): void {
     this.humans = this.arrayService.getAll();
   }
 }
