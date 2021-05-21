@@ -12,7 +12,17 @@ export class CarListComponent implements OnInit {
   constructor(private carService: CarService) { }
 
   ngOnInit(): void {
-    this.cars = this.carService.cars;
+    this.carService.votaAndmebaasist().subscribe(itemsFromFirebase => {
+      this.cars = [];
+      for (const key in itemsFromFirebase) {
+        const element = itemsFromFirebase[key];
+        this.cars.push(element);
+      }
+      console.log(this.cars);
+    });
   }
 
+  onAddToDatabase() {
+    this.carService.salvestaAndmebaasi().subscribe(()=>alert("Lisatud!"));
+  }
 }

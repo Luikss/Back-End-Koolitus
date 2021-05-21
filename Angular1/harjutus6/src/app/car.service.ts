@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -15,8 +16,20 @@ export class CarService {
     { type: "touring", make: "Volvo", model: "XC70", year: 2015 },
     { type: "sedan", make: "Lexus", model: "GS300", year: 2007 },
     { type: "hatchback", make: "Toyota", model: "Corolla", year: 2008 },
-    { type: "touring", make: "Mercedes-Benz", model: "C220", year: 2009 },    
-  ]
+    { type: "touring", make: "Mercedes-Benz", model: "C220", year: 2009 }   
+  ];
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
+
+  salvestaAndmebaasi() {
+    return this.httpClient.put("https://cars-exercise3-default-rtdb.europe-west1.firebasedatabase.app/cars.json", this.cars);
+  }
+
+  lisaAndmebaasi(car: { type: string, make: string, model: string, year: number }) {
+    return this.httpClient.post("https://cars-exercise3-default-rtdb.europe-west1.firebasedatabase.app/cars.json", car);
+  }
+
+  votaAndmebaasist() {
+    return this.httpClient.get("https://cars-exercise3-default-rtdb.europe-west1.firebasedatabase.app/cars.json");
+  }
 }

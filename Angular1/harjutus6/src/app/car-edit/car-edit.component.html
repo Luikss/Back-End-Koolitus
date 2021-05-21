@@ -1,1 +1,11 @@
-<p>car-edit works!</p>
+<form (ngSubmit)="onSubmit(carEditForm)" [formGroup]="carEditForm">
+    <label>Keretüüp</label><br>
+    <input type="text" formControlName="type" required><br>
+    <label>Mark</label><br>
+    <input type="text" formControlName="make" required><br>
+    <label>Mudel</label><br>
+    <input type="text" formControlName="model" required><br>
+    <label>Aasta</label><br>
+    <input type="text" formControlName="year" required><br>
+    <button type="submit" [disabled]="carEditForm.invalid">Sisesta</button>
+</form>
