@@ -30,6 +30,6 @@ export class CarService {
   }
 
   votaAndmebaasist() {
-    return this.httpClient.get("https://cars-exercise3-default-rtdb.europe-west1.firebasedatabase.app/cars.json");
+    return this.httpClient.get<any>("https://cars-exercise3-default-rtdb.europe-west1.firebasedatabase.app/cars.json");
   }
 }

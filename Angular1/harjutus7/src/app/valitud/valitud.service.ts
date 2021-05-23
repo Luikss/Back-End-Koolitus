@@ -5,7 +5,7 @@ import { Person } from '../person.model';
   providedIn: 'root'
 })
 export class ValitudService {
-  chosenPeople = [];
+  chosenPeople: Person[] = [];
 
   constructor() { }
 
