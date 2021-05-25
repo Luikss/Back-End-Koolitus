@@ -1,3 +1,17 @@
+<ngb-carousel *ngIf="images">
+  <ng-template *ngFor="let image of images" ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img [src]="image" alt="Random first slide">
+    </div>
+    <div class="carousel-caption">
+      <h3>10 seconds between slides...</h3>
+      <p>This carousel uses customized default values.</p>
+    </div>
+  </ng-template>
+</ngb-carousel>
+
+<div *ngIf="!items">Esemeid ei ole!</div>
+
 <div class="items-wrapper">
 <div class="item" *ngFor="let item of items; let i = index">
     <img class="item-image" routerLink="toode/{{i}}" src="{{ item.imgSrc }}">
