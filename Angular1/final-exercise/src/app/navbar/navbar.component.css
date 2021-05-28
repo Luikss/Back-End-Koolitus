@@ -1,0 +1,6 @@
+.main-navbar {
+    background-color:#5cdbe4;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+}
