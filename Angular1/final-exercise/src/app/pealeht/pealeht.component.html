@@ -1,8 +1,6 @@
 <div class="item" *ngFor="let item of items; let i = index">
-    <br>
     <img src="{{ item.image }}">
-    <div>{{ item.name }}</div><br>
-    <div>Soodushind: {{ item.price }}</div>
-    <div>Tavahind: {{ item.base }}</div>
+    <div>{{ item.name }}</div>
+    <div>Hind: {{ item.price }}€</div>
     <button (click)="onAddToCart(item)">LISA OSTUKORVI</button>
 </div>

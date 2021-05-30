@@ -86,7 +86,7 @@ public class Game {
     }
 
     private static void enemySeen(Map<EnemyType, Integer> defeatedEnemies, Player player, Enemy enemy, Healer healer, QuestMaster questMaster, Scanner scanner, String input) {
-        if (player.getxCoord() == enemy.getxCoord() &&
+        if (player.getxCoord() == enemy.getxCoord() &gm
                 player.getyCoord() == enemy.getyCoord() && enemy.isVisible()) {
             if (player.getItems().size() < 1) {
                 System.out.println("SA EI SAA VÕIDELDA, KUI SUL POLE RELVI");
