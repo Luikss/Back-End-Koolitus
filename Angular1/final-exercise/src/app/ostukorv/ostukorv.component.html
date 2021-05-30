@@ -8,6 +8,8 @@
     <br>
     <img src="{{ cartItem.image }}">
     <div>{{ cartItem.name }}</div><br>
-    <div>Hind: {{ cartItem.price }}</div>
+    <div>Hind: {{ cartItem.price }}€</div>
     <button (click)="onRemoveFromCart(i)">KUSTUTA</button>
 </div>
+<br><br>
+<div>KOKKU:{{ sumOfCart }} €</div>

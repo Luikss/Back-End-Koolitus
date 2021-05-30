@@ -1,0 +1,13 @@
+<div routerLink="/admin">TAGASI</div>
+
+<form (ngSubmit)="onSubmit(addItemForm)" #addItemForm="ngForm">
+    <br><label>ID</label><br>
+    <input type="number" ngModel name="id" placeholder="Sisesta toote ID" required><br>
+    <label>PILDI URL</label><br>
+    <input type="text" ngModel name="image" placeholder="Sisesta pildi URL" required><br>
+    <label>NIMETUS</label><br>
+    <input type="text" ngModel name="name" placeholder="Sisesta toote nimetus" required><br>
+    <label>HIND</label><br>
+    <input type="number" ngModel name="price" placeholder="Sisesta toote hind" required><br>
+    <button type="submit" [disabled]="addItemForm.invalid">SISESTA</button><br>
+</form>

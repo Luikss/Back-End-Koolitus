@@ -7,6 +7,11 @@ import { PealehtComponent } from './pealeht/pealeht.component';
 import { OstukorvComponent } from './ostukorv/ostukorv.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { AdminKodulehtComponent } from './admin/admin-koduleht/admin-koduleht.component';
+import { LisaToodeComponent } from './admin/lisa-toode/lisa-toode.component';
+import { VaataTooteidComponent } from './admin/vaata-tooteid/vaata-tooteid.component';
+import { MuudaToodetComponent } from './admin/muuda-toodet/muuda-toodet.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,11 +19,16 @@ import { FooterComponent } from './footer/footer.component';
     PealehtComponent,
     OstukorvComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    AdminKodulehtComponent,
+    LisaToodeComponent,
+    VaataTooteidComponent,
+    MuudaToodetComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
