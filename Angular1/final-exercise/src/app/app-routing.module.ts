@@ -6,13 +6,15 @@ import { MuudaToodetComponent } from './admin/muuda-toodet/muuda-toodet.componen
 import { VaataTooteidComponent } from './admin/vaata-tooteid/vaata-tooteid.component';
 import { OstukorvComponent } from './ostukorv/ostukorv.component';
 import { PealehtComponent } from './pealeht/pealeht.component';
+import { VaataUksiktoodetComponent } from './pealeht/vaata-uksiktoodet/vaata-uksiktoodet/vaata-uksiktoodet.component';
 
 const routes: Routes = [
   { path:"", component: PealehtComponent },
   { path:"ostukorv", component: OstukorvComponent },
+  { path: "toode/:itemId", component: VaataUksiktoodetComponent},
   { path:"admin", component: AdminKodulehtComponent },
   { path:"admin/lisa-toode", component: LisaToodeComponent },
-  { path:"admin/muuda-toodet", component: MuudaToodetComponent },
+  { path:"admin/muuda-toodet/:itemId", component: MuudaToodetComponent },
   { path:"admin/vaata-tooteid", component: VaataTooteidComponent }
 ];
 

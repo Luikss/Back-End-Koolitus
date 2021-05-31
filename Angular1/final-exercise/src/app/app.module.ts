@@ -11,7 +11,8 @@ import { AdminKodulehtComponent } from './admin/admin-koduleht/admin-koduleht.co
 import { LisaToodeComponent } from './admin/lisa-toode/lisa-toode.component';
 import { VaataTooteidComponent } from './admin/vaata-tooteid/vaata-tooteid.component';
 import { MuudaToodetComponent } from './admin/muuda-toodet/muuda-toodet.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { VaataUksiktoodetComponent } from './pealeht/vaata-uksiktoodet/vaata-uksiktoodet/vaata-uksiktoodet.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +24,14 @@ import { FormsModule } from '@angular/forms';
     AdminKodulehtComponent,
     LisaToodeComponent,
     VaataTooteidComponent,
-    MuudaToodetComponent
+    MuudaToodetComponent,
+    VaataUksiktoodetComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

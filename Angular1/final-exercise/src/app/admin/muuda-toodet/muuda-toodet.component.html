@@ -1,1 +1,14 @@
-<div routerLink="/admin">TAGASI</div>
+<br><button routerLink="/admin">{{ 'TÜHISTA' }}</button>
+<br><button routerLink="/admin/vaata-tooteid">{{ 'TAGASI' }}</button><br>
+
+<form (ngSubmit)="onSubmit(editItemForm)" [formGroup]="editItemForm">
+    <label>ID</label><br>
+    <input type="number" formControlName="id" placeholder="Sisesta toote nimetus" required><br>
+    <label>PILT URL</label><br>
+    <input type="text" formControlName="image" placeholder="Sisesta pildi URL" required><br>
+    <label>NIMETUS</label><br>
+    <input type="text" formControlName="name" placeholder="Sisesta toote nimetus" required><br>
+    <label>HIND</label><br>
+    <input type="number" formControlName="price" placeholder="Sisesta toote hind" required><br>
+    <button type="submit" [disabled]="editItemForm.invalid">SISESTA</button><br>
+</form>

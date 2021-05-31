@@ -1,5 +1,7 @@
-<div class="item" *ngFor="let item of items; let i = index">
-    <img routerLink="toode/{{ i }}" src="{{ item.image }}">
+<br><button routerLink="">{{ 'TAGASI' }}</button>
+
+<div class="item">
+    <img src="{{ item.image }}">
     <div>{{ item.name }}</div>
     <div>Hind: {{ item.price }}€</div>
     <button (click)="onAddToCart(item)">LISA OSTUKORVI</button>

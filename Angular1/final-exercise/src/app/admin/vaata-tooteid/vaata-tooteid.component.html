@@ -1,8 +1,9 @@
-<div routerLink="/admin">TAGASI</div><br>
+<br><button routerLink="/admin">{{ 'TAGASI' }}</button><br>
 
 <div *ngFor="let item of items; let i = index">
     <div>NIMI: {{ item.name }}</div>
     <div>HIND: {{ item.price }} €</div>
     <button (click)="onDeleteItem(i)">KUSTUTA</button>
+    <button routerLink="/admin/muuda-toodet/{{i}}">{{ 'MUUDA' }}</button>
     <br><br>
 </div>

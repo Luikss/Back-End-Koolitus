@@ -35,4 +35,12 @@ export class ItemService {
   removeFromCart(index: number): void {
     this.itemsInCart.splice(index, 1);
   }
+
+  getItem(id: number): Item {
+    return this.items[id];
+  }
+  
+  editItem(item: Item, id: number): void {
+    this.items[id] = item;
+  }
 }
