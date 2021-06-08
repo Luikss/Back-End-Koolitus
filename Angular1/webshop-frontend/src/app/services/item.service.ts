@@ -32,10 +32,10 @@ export class ItemService {
   }
 
   addItemToDatabase(item: Item) {
-    return this.httpClient.post("https://webshop-frontend-default-rtdb.europe-west1.firebasedatabase.app/items.json",item);
+    return this.httpClient.post("http://localhost:8080/add-item",item);
   }
 
   getItemsFromDatabase() {
-    return this.httpClient.get<Item[]>("https://webshop-frontend-default-rtdb.europe-west1.firebasedatabase.app/items.json");
+    return this.httpClient.get<Item[]>("http://localhost:8080/items");
   }
 }
