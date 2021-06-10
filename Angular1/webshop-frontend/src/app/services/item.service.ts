@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Item } from '../models/item.model';
 
 @Injectable({
@@ -15,21 +16,9 @@ export class ItemService {
     this.items.push(item);
   }
 
-  deleteItem(index: number): void {
-    this.items.splice(index, 1);
-  }
-
-  getItem(id: number): Item {
-    return this.items[id];
-  }
-
-  editItem(item: Item, id: number): void {
-    this.items[id] = item;
-  }
-
-  saveItemsToDatabase(items: Item[]) {
-    return this.httpClient.put("https://webshop-frontend-default-rtdb.europe-west1.firebasedatabase.app/items.json",items);
-  }
+  // saveItemsToDatabase(items: Item[]) {
+  //   return this.httpClient.put("https://webshop-frontend-default-rtdb.europe-west1.firebasedatabase.app/items.json",items);
+  // }
 
   addItemToDatabase(item: Item) {
     return this.httpClient.post("http://localhost:8080/add-item",item);
@@ -37,5 +26,17 @@ export class ItemService {
 
   getItemsFromDatabase() {
     return this.httpClient.get<Item[]>("http://localhost:8080/items");
+  }
+
+  editItem(item: Item): Observable<Object> {
+    return this.httpClient.post("http://localhost:8080/edit-item", item);
+  }
+
+  getItem(id: number): Observable<Item> {
+    return this.httpClient.get<Item>("http://localhost:8080/view-item/" + id);
+  }
+
+  deleteItem(id: number): Observable<Object> {
+    return this.httpClient.delete<Item>("http://localhost:8080/delete-item/" + id);
   }
 }

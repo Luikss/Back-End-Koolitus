@@ -14,14 +14,18 @@ export class ItemListComponent implements OnInit {
 
   ngOnInit(): void {
     this.ItemService.getItemsFromDatabase().subscribe(items => {
-      for (const key in items) {
-        this.items.push(items[key]);
-      }
+      this.items = items;
     })
   }
 
-  onDeleteItem(i: number): void {
-    this.items.splice(i,1);
-    this.ItemService.saveItemsToDatabase(this.items).subscribe();
+  onDeleteItem(i: number | undefined): void {
+    if(i) {
+      this.ItemService.deleteItem(i).subscribe(()=>{
+        this.ItemService.getItemsFromDatabase().subscribe(items => {
+          this.items = items;
+        })
+      });
+    }
+    //this.ItemService.saveItemsToDatabase(this.items).subscribe();
   }
 }
