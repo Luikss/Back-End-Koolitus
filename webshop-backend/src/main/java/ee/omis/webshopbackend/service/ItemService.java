@@ -22,8 +22,7 @@ public class ItemService {
         itemRepository.save(item);
     }
 
-    public void deleteItem(Long id) { itemRepository.deleteById(id);
-    }
+    public void deleteItem(Long id) { itemRepository.deleteById(id); }
 
     public Optional<Item> getOneItem(Long id) {
         return itemRepository.findById(id);

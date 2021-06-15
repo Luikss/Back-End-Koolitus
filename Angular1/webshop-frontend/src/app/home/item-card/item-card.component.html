@@ -1,0 +1,4 @@
+<img class="item-image" routerLink="toode/{{item.id}}" src="{{ item.imgSrc }}">
+<div class="item-title">{{ item.title | shortenTitle:6}}</div>
+<div class="item-price">{{ item.price | itemPrice }}</div>
+<button class="btn btn-warning" (click)="onAddToCart(item)">LISA OSTUKORVI</button>

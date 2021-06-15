@@ -15,8 +15,10 @@ import { Property } from './property.enum';
 })
 export class HomeComponent implements OnInit {
   images: CarouselImage[] = [];
-  items: Item[] = [];
+  itemsOriginal: Item[] = [];
+  itemsShown: Item[] = [];
   sortState =  {direction: Direction.ORIGINAL, property: Property.EMPTY};
+  isItemAddedToCart = false;
 
   constructor(private cartService: CartService, 
     private itemService: ItemService,
@@ -43,22 +45,28 @@ export class HomeComponent implements OnInit {
 
     console.log("HOME componendis");
     this.itemService.getItemsFromDatabase().subscribe(items => {
-      this.items = items;
+      this.itemsOriginal = items;
+      this.itemsShown = items;
     })
+  }
+
+  onCategorySelect(category: string) {
+    this.itemsShown = this.itemsOriginal.filter(item => item.category == category);
   }
 
   onSortByTitle() {
     this.itemService.getItemsFromDatabase().subscribe(items => {
-      this.items = items;
+      this.itemsOriginal = items;
+      this.itemsShown = items;
       switch (this.sortState.direction) {
         case Direction.ORIGINAL:
-          this.items.sort((previousItem, currentItem)=>
+          this.itemsShown.sort((previousItem, currentItem)=>
             previousItem.title.localeCompare(currentItem.title))
             this.sortState.direction = Direction.ASC;
             this.sortState.property = Property.TITLE;
         break;
         case Direction.ASC:
-          this.items.sort((previousItem, currentItem)=>
+          this.itemsShown.sort((previousItem, currentItem)=>
             currentItem.title.localeCompare(previousItem.title))
             this.sortState.direction = Direction.DESC;
             this.sortState.property = Property.TITLE;
@@ -73,16 +81,17 @@ export class HomeComponent implements OnInit {
 
   onSortByPrice() {
     this.itemService.getItemsFromDatabase().subscribe(items => {
-      this.items = items;
+      this.itemsOriginal = items;
+      this.itemsShown = items;
       switch (this.sortState.direction) {
         case Direction.ORIGINAL:
-          this.items.sort((previousItem, currentItem)=>
+          this.itemsShown.sort((previousItem, currentItem)=>
             previousItem.price - currentItem.price)
             this.sortState.direction = Direction.ASC;
             this.sortState.property = Property.PRICE;
         break;
         case Direction.ASC:
-          this.items.sort((previousItem, currentItem)=>
+          this.itemsShown.sort((previousItem, currentItem)=>
           currentItem.price - previousItem.price)
             this.sortState.direction = Direction.DESC;
             this.sortState.property = Property.PRICE;
@@ -95,8 +104,8 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  onAddToCart(item: Item): void {
-    this.cartService.addToCart(item);
-    this.cartService.cartItemsChanged.next(this.cartService.getCartItems());
+  onAddedToCart(wasAdded: boolean) {
+    this.isItemAddedToCart = wasAdded;
+    setTimeout(()=>this.isItemAddedToCart = false, 3000);
   }
 }

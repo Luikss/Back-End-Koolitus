@@ -1,3 +1,5 @@
+<app-back-button [url]="'/admin'"></app-back-button>
+
 <form (ngSubmit)="onSettingsSubmit()" *ngIf="carouselSettingsForm" [formGroup]="carouselSettingsForm">
     <label>Pildi vahetuse kiirus</label><br>
     <input type="number" formControlName="interval"><br>
