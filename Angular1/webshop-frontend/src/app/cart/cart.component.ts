@@ -8,33 +8,40 @@ import { CartService } from './cart.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  cartItems: Item[] = [];
+  cartItems: {cartItem: Item, count: number}[] = [];
   sumOfCart = 0;
 
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    console.log("CART componendis");
-    this.cartItems = this.cartService.getCartItems();
     this.calculateSumOfCart();
   }
 
   onRemoveFromCart(index: number): void {
     this.cartService.removeFromCart(index);
-    this.cartItems = this.cartService.getCartItems();
+    this.calculateSumOfCart();
+  }
+
+  onReduceFromCart(item: Item) {
+    this.cartService.reduceFromCart(item);
+    this.calculateSumOfCart();
+  }
+
+  onAddToCart(item: Item) {
+    this.cartService.addToCart(item);
     this.calculateSumOfCart();
   }
 
   onEmptyCart(): void {
     this.cartService.emptyCart();
-    this.cartItems = this.cartService.getCartItems();
     this.calculateSumOfCart();
   }
 
   calculateSumOfCart(): void {
+    this.cartItems = this.cartService.getCartItems();
     this.sumOfCart = 0;
     this.cartItems.forEach(cartItem => {
-      this.sumOfCart += cartItem.price;
+      this.sumOfCart += cartItem.cartItem.price * cartItem.count;
     });
     this.cartService.cartItemsChanged.next(this.cartService.getCartItems());
   }

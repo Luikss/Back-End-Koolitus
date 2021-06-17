@@ -21,4 +21,5 @@ public class Item {
     private String imgSrc;
     private double price;
     private String category;
+    private Integer barcode;
 }

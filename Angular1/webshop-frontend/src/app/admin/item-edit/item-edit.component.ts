@@ -23,6 +23,7 @@ export class ItemEditComponent implements OnInit {
       this.editItemForm = new FormGroup({
         title: new FormControl(item.title),
         price: new FormControl(item.price),
+        barcode: new FormControl(item.barcode),
         imgSrc: new FormControl(item.imgSrc),
         category: new FormControl(item.category)
       });
@@ -37,6 +38,7 @@ export class ItemEditComponent implements OnInit {
         formValue.price,
         formValue.imgSrc,
         formValue.category,
+        formValue.barcode,
         this.id
         )
       this.itemService.editItem(item).subscribe(()=>{
